@@ -1,12 +1,26 @@
 package models;
 
+import jakarta.persistence.*;
+
 import java.util.Objects;
 
+@Entity
+@Table(name = "items")
 public class Item {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "itemId")
     private int id;
+
+    @Column(nullable = false)
     private String itemName;
     private String description;
+
+    @Column(nullable = false)
     private double price;
+
+    @Column(nullable = false)
     private int quantity;
 
     public Item(){

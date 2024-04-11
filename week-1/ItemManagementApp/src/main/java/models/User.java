@@ -1,13 +1,19 @@
 package models;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
 @Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "userId")
     private int id;
+
+    @Column(nullable = false)
     private String name;
 
     public User(){
