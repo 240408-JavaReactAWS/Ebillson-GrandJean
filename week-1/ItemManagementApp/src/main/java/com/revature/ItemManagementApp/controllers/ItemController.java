@@ -27,9 +27,12 @@ public class ItemController {
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<Object> updateItemById(@PathVariable Integer itemId, @RequestBody Item itemDescription){
-        int rowsUpdated = itemService.updateItem(itemId, itemDescription.getDescription());
-        return null;
+    public ResponseEntity<Object> updateItemById(@PathVariable Integer id, @RequestBody Item itemDescription){
+        int rowsUpdated = itemService.updateItem(id, itemDescription.getDescription());
+        if (rowsUpdated ==1){
+            return ResponseEntity.ok(rowsUpdated);
+        }
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
 }

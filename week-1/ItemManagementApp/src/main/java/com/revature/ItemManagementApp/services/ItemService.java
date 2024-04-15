@@ -39,10 +39,8 @@ public class ItemService {
                 item.setDescription(itemDescription);
                 itemDao.save(item);
             }
-            return itemId;
-        } else {
-            return null;
+            return 1;
         }
-
+        return 0;
     }
 }
