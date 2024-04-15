@@ -10,12 +10,12 @@ import com.revature.ItemManagementApp.services.ItemService;
 
 @RestController
 @RequestMapping("/items")
-public class UserController {
+public class ItemController {
 
     private ItemService itemService;
 
     @Autowired
-    public UserController(ItemService itemService) {
+    public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
 
