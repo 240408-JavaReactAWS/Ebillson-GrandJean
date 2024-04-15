@@ -1,4 +1,4 @@
-package models;
+package com.revature.ItemManagementApp.models;
 
 import jakarta.persistence.*;
 

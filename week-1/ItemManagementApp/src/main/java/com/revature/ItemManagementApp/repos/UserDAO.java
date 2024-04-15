@@ -1,6 +1,6 @@
-package repos;
+package com.revature.ItemManagementApp.repos;
 
-import models.User;
+import com.revature.ItemManagementApp.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserDAO extends JpaRepository<User, Integer> {

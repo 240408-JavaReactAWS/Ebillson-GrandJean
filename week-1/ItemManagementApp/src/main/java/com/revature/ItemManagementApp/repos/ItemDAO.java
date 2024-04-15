@@ -1,6 +1,6 @@
-package repos;
+package com.revature.ItemManagementApp.repos;
 
-import models.Item;
+import com.revature.ItemManagementApp.models.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ItemDAO extends JpaRepository<Item, Integer> {
