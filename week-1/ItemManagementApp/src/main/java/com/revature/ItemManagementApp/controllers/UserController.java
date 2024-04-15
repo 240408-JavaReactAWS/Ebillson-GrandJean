@@ -26,9 +26,10 @@ public class UserController {
         else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-//    @PatchMapping("{id}")
-//    public ResponseEntity<Object> updateItemById(@PathVariable Integer itemId, @RequestBody){
-//
-//    }
+    @PatchMapping("{id}")
+    public ResponseEntity<Object> updateItemById(@PathVariable Integer itemId, @RequestBody Item itemDescription){
+        int rowsUpdated = itemService.updateItem(itemId, itemDescription.getDescription());
+        return null;
+    }
 
 }
