@@ -30,8 +30,8 @@ public class ItemService {
         return itemRepository.findItemById(id);
     }
 
-    public Item updateItem(Item updatedItem) {
-        Optional<Item> itemOptional = itemRepository.findById(updatedItem.getId());
+    public Item updateItem(Integer id, Item updatedItem) {
+        Optional<Item> itemOptional = itemRepository.findById(id);
         if (itemOptional.isPresent()) {
             // Update the item's properties
             Item item = itemOptional.get();

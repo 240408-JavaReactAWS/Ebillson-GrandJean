@@ -28,7 +28,7 @@ public class ItemController {
 
     @PatchMapping("{id}")
     public ResponseEntity<Item> updateItemById(@PathVariable Integer id, @RequestBody Item updatedItem) {
-        Item savedItem = itemService.updateItem(updatedItem);
+        Item savedItem = itemService.updateItem(id, updatedItem);
         if (savedItem != null) {
             return ResponseEntity.ok(savedItem);
         } else {
