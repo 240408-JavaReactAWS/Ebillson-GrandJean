@@ -14,7 +14,6 @@ public class UserController {
     private UserService userService;
 
 //    4- As a user, I can view all Items
-//    6- As a user, I can view a singular Item by its ID
 //      (HINT: Use Path Params to select a Item by its ID)
 //    7- As a user, I can update a Item (Change the name or other properties)
 //    8- As a user, I can delete a Item by its ID
