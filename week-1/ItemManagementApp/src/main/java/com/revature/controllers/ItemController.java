@@ -1,12 +1,11 @@
 package com.revature.controllers;
 
 import com.revature.models.Item;
-import com.revature.models.User;
+import com.revature.services.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.revature.services.ItemService;
 
 
 @RestController
@@ -28,12 +27,24 @@ public class ItemController {
     }
 
     @PatchMapping("{id}")
-    public ResponseEntity<Object> updateItemById(@PathVariable Integer id, @RequestBody Item itemDescription){
-        int rowsUpdated = itemService.updateItem(id, itemDescription.getDescription());
-        if (rowsUpdated ==1){
-            return ResponseEntity.ok(rowsUpdated);
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    }
+    public ResponseEntity<Item> updateItemById(@PathVariable Integer id, @RequestBody Item updatedItem) {
+        Item existingItem = itemService.findItemById(id);
+        if (existingItem != null) {
+            // Update all properties of the existing item with the updated values
+            existingItem.setItemName(updatedItem.getItemName());
+            existingItem.setDescription(updatedItem.getDescription());
+            existingItem.setPrice(updatedItem.getPrice());
+            existingItem.setQuantity(updatedItem.getQuantity());
 
+            // Save the updated item
+            Item savedItem = itemService.updateItem(existingItem);
+            if (savedItem != null) {
+                return ResponseEntity.ok(savedItem);
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

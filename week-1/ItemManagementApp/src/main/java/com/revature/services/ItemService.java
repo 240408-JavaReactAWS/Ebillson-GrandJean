@@ -30,18 +30,19 @@ public class ItemService {
         return itemRepository.findItemById(id);
     }
 
-    public Integer updateItem(Integer itemId,String itemDescription) {
-        Optional<Item> itemOptional = itemRepository.findById(itemId);
+    public Item updateItem(Item updatedItem) {
+        Optional<Item> itemOptional = itemRepository.findById(updatedItem.getId());
         if (itemOptional.isPresent()) {
             // Update the item's properties
             Item item = itemOptional.get();
-            if(itemDescription != null){
-                item.setDescription(itemDescription);
-                itemRepository.save(item);
-            }
-            return 1;
+            item.setItemName(updatedItem.getItemName());
+            item.setDescription(updatedItem.getDescription());
+            item.setPrice(updatedItem.getPrice());
+            item.setQuantity(updatedItem.getQuantity());
+            // Save the updated item
+            return itemRepository.save(item);
         }
-        return 0;
+        return null;
     }
 
     public Item createItem(Item item){
