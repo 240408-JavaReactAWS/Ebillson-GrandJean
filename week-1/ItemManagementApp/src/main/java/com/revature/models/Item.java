@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -23,21 +24,20 @@ public class Item {
     @Column(nullable = false)
     private Integer quantity;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @Column(nullable = false)
+    private Integer userId;
 
     public Item(){
 
     }
 
-    public Item(Integer id, String itemName, String description, Double price, Integer quantity, User user) {
+    public Item(Integer id, String itemName, String description, Double price, Integer quantity, Integer userId) {
         this.id = id;
         this.itemName = itemName;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
-        this.user = user;
+        this.userId = userId;
     }
 
     public Integer getId() {
@@ -80,12 +80,12 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public User getUser() {
-        return user;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -96,7 +96,7 @@ public class Item {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
-                ", user=" + user +
+                ", userId =" + userId +
                 '}';
     }
 

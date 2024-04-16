@@ -61,11 +61,5 @@ public class UserController {
         return new ResponseEntity<User>(userToLogin, HttpStatus.OK);
     }
 
-    // 3- As a user, I can create a new Item
-
-
-
-
-
 
 }

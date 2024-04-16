@@ -10,6 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 public class UserItemController {
     private UserService userService;
@@ -25,13 +28,14 @@ public class UserItemController {
     @PostMapping("users/{id}/items/create")
     public ResponseEntity<Item> createItem(@RequestBody Item item, @PathVariable Integer id){
         User findUser = userService.findUserById(id);
+
         if(findUser != null){
-            item.setUser(findUser);
+            item.setUserId(findUser.getId());
             boolean isItemNameBlank = item.getItemName().isBlank();
             int itemNameLength = item.getItemName().length();
             if(!isItemNameBlank && itemNameLength >= 4){
                 Item itemToCreate = itemService.createItem(item);
-                return new ResponseEntity<Item>(itemToCreate, HttpStatus.OK);
+                return new ResponseEntity<>(itemToCreate, HttpStatus.OK);
             }
             return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
