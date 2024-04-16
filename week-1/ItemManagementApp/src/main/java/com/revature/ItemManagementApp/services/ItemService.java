@@ -3,19 +3,19 @@ package com.revature.ItemManagementApp.services;
 import com.revature.ItemManagementApp.models.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.revature.ItemManagementApp.repos.ItemDAO;
+import com.revature.ItemManagementApp.repos.ItemRepository;
 
 import java.util.Optional;
 
 @Service
 public class ItemService {
 
-    private ItemDAO itemDao;
+    private ItemRepository itemRepository;
 
     //Dependency injection
     @Autowired
-    public ItemService(ItemDAO itemDAO) {
-        this.itemDao = itemDAO;
+    public ItemService(ItemRepository itemRepository) {
+        this.itemRepository = itemRepository;
     }
 
     //Methods that will be called on by controller layer which will talk to the dao layer
@@ -27,17 +27,17 @@ public class ItemService {
 //           return itemOptional.get();
 //        }
 //        return null;
-        return itemDao.findItemById(id);
+        return itemRepository.findItemById(id);
     }
 
     public Integer updateItem(Integer itemId,String itemDescription) {
-        Optional<Item> itemOptional = itemDao.findById(itemId);
+        Optional<Item> itemOptional = itemRepository.findById(itemId);
         if (itemOptional.isPresent()) {
             // Update the item's properties
             Item item = itemOptional.get();
             if(itemDescription != null){
                 item.setDescription(itemDescription);
-                itemDao.save(item);
+                itemRepository.save(item);
             }
             return 1;
         }

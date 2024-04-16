@@ -10,10 +10,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @ComponentScan("com.revature.ItemManagementApp") //We want to scan the com.revature package for spring Beans
 @EntityScan("com.revature.ItemManagementApp.models") //We want to scan the models package for Database entities
 @EnableJpaRepositories("com.revature.ItemManagementApp.repos") //allows all dao to be a JpaRepository
-public class ItemManagementAppApplication {
+public class ItemManagementApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ItemManagementAppApplication.class, args);
+		SpringApplication.run(ItemManagementApp.class, args);
 	}
 
 }

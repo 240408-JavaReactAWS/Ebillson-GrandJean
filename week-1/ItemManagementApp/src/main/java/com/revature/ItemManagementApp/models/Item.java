@@ -10,32 +10,35 @@ public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "itemId")
-    private int id;
+    private Integer id;
 
     @Column(nullable = false)
     private String itemName;
     private String description;
 
     @Column(nullable = false)
-    private double price;
+    private Double price;
 
     @Column(nullable = false)
-    private int quantity;
+    private Integer quantity;
+
+    @Column(nullable = false)
+    private Integer userId;
 
     public Item(){
 
     }
 
-    public Item(int id, String itemName, String description, double price, int quantity) {
+    public Item(Integer id, String itemName, String description, Double price, Integer quantity, Integer userId) {
         this.id = id;
         this.itemName = itemName;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
+        this.userId = userId;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -59,11 +62,11 @@ public class Item {
         this.description = description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -71,7 +74,7 @@ public class Item {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
@@ -98,4 +101,5 @@ public class Item {
     public int hashCode() {
         return Objects.hash(id, itemName);
     }
+
 }
