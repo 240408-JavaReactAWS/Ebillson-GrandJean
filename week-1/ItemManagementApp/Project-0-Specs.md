@@ -19,13 +19,13 @@ Using Spring Boot, create a simple API for creating and managing items. The item
 
 * You'll be expected to complete 4 of the following User Stories as a **MINIMUM**. The more stories implemented the better, but make sure you have at least 4 of the following:
 
-  * As a user, I can create a new Item
+  * [x] As a user, I can create a new Item
   * As a user, I can view all Items
-  * As a user, I can view a singular Item by its ID (HINT: Use Path Params to select a Item by its ID)
+  * [x] As a user, I can view a singular Item by its ID (HINT: Use Path Params to select a Item by its ID)
   * As a user, I can update a Item (Change the name or other properties)
   * As a user, I can delete a Item by its ID (HINT: Use Path Params to select a Item by its ID)
-  * As a user, I can create an account to hold my Items
-  * As a user, I can login to my account (which is stored in the database)
+  * [x] As a user, I can create an account to hold my Items
+  * [x] As a user, I can login to my account (which is stored in the database)
   * As a user, I can view the Items associated with my account
 
 * Other Optional Requirements include the following:

@@ -19,6 +19,7 @@ public class ItemController {
         this.itemService = itemService;
     }
 
+    // 6- As a user, I can view a singular Item by its ID
     @GetMapping("{id}")
     public ResponseEntity<Item> findItemById(@PathVariable int id) {
         Item item = itemService.findItemById(id);
