@@ -6,7 +6,7 @@ create table users
     id  serial
         primary key,
     name     varchar(255) not null,
-    password varchar(255) not null,
+    password varchar(255) not null
 );
 
 create table items
@@ -18,9 +18,5 @@ create table items
     price       double precision not null,
     quantity    integer          not null,
     user_id     integer          not null,
---     foreign key (user_id) references users(id)
+    foreign key (user_id) references  users(id)
 );
-
-alter table items
-    add constraint items_users_id_fk
-        foreign key (user_id) references users;

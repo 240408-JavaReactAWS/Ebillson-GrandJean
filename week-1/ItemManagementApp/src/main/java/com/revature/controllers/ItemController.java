@@ -1,11 +1,11 @@
-package com.revature.ItemManagementApp.controllers;
+package com.revature.controllers;
 
-import com.revature.ItemManagementApp.models.Item;
+import com.revature.models.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.revature.ItemManagementApp.services.ItemService;
+import com.revature.services.ItemService;
 
 
 @RestController

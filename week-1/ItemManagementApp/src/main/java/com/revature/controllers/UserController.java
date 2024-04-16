@@ -1,7 +1,7 @@
-package com.revature.ItemManagementApp.controllers;
+package com.revature.controllers;
 
-import com.revature.ItemManagementApp.models.User;
-import com.revature.ItemManagementApp.services.UserService;
+import com.revature.models.User;
+import com.revature.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

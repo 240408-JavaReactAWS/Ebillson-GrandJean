@@ -1,8 +1,8 @@
-package com.revature.ItemManagementApp.services;
+package com.revature.services;
 
 
-import com.revature.ItemManagementApp.models.User;
-import com.revature.ItemManagementApp.repos.UserRepository;
+import com.revature.models.User;
+import com.revature.repos.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

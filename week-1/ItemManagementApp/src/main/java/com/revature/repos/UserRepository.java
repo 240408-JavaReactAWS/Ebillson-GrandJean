@@ -1,6 +1,6 @@
-package com.revature.ItemManagementApp.repos;
+package com.revature.repos;
 
-import com.revature.ItemManagementApp.models.User;
+import com.revature.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

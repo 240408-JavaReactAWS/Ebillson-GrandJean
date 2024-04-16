@@ -1,7 +1,8 @@
-package com.revature.ItemManagementApp.models;
+package com.revature.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,27 +23,28 @@ public class Item {
     @Column(nullable = false)
     private Integer quantity;
 
-    @Column(nullable = false)
-    private Integer userId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Item(){
 
     }
 
-    public Item(Integer id, String itemName, String description, Double price, Integer quantity, Integer userId) {
+    public Item(Integer id, String itemName, String description, Double price, Integer quantity, User user) {
         this.id = id;
         this.itemName = itemName;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
-        this.userId = userId;
+        this.user = user;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -78,6 +80,14 @@ public class Item {
         this.quantity = quantity;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Item{" +
@@ -86,6 +96,7 @@ public class Item {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantity=" + quantity +
+                ", user=" + user +
                 '}';
     }
 
@@ -94,7 +105,7 @@ public class Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return id == item.id && Objects.equals(itemName, item.itemName);
+        return Objects.equals(id, item.id) && Objects.equals(itemName, item.itemName);
     }
 
     @Override
