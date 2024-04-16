@@ -43,4 +43,8 @@ public class ItemService {
         }
         return 0;
     }
+
+    public Item createItem(Item item){
+        return  itemRepository.save(item);
+    }
 }

@@ -13,7 +13,6 @@ public class UserController {
 
     private UserService userService;
 
-//    3- As a user, I can create a new Item
 //    4- As a user, I can view all Items
 //    6- As a user, I can view a singular Item by its ID
 //      (HINT: Use Path Params to select a Item by its ID)
@@ -61,6 +60,9 @@ public class UserController {
         }
         return new ResponseEntity<User>(userToLogin, HttpStatus.OK);
     }
+
+    // 3- As a user, I can create a new Item
+
 
 
 
