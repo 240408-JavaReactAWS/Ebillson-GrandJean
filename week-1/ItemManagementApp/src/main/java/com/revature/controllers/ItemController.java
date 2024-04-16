@@ -28,21 +28,9 @@ public class ItemController {
 
     @PatchMapping("{id}")
     public ResponseEntity<Item> updateItemById(@PathVariable Integer id, @RequestBody Item updatedItem) {
-        Item existingItem = itemService.findItemById(id);
-        if (existingItem != null) {
-            // Update all properties of the existing item with the updated values
-            existingItem.setItemName(updatedItem.getItemName());
-            existingItem.setDescription(updatedItem.getDescription());
-            existingItem.setPrice(updatedItem.getPrice());
-            existingItem.setQuantity(updatedItem.getQuantity());
-
-            // Save the updated item
-            Item savedItem = itemService.updateItem(existingItem);
-            if (savedItem != null) {
-                return ResponseEntity.ok(savedItem);
-            } else {
-                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-            }
+        Item savedItem = itemService.updateItem(updatedItem);
+        if (savedItem != null) {
+            return ResponseEntity.ok(savedItem);
         } else {
             return ResponseEntity.notFound().build();
         }
