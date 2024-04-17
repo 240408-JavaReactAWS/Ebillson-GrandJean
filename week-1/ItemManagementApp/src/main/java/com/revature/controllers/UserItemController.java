@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/users")
 public class UserItemController {
     private UserService userService;
     private ItemService itemService;
@@ -25,7 +26,7 @@ public class UserItemController {
     }
 
     // 3- As a user, I can create a new Item
-    @PostMapping("users/{id}/items/create")
+    @PostMapping("{id}/items")
     public ResponseEntity<Item> createItem(@RequestBody Item item, @PathVariable Integer id){
         User findUser = userService.findUserById(id);
 
@@ -38,6 +39,17 @@ public class UserItemController {
                 return new ResponseEntity<>(itemToCreate, HttpStatus.OK);
             }
             return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    //  5- As a user, I can view the Items associated with my account
+    @GetMapping("{id}/items")
+    public ResponseEntity<List<Item>> getAllUserItems(@PathVariable Integer id){
+        User findUser = userService.findUserById(id);
+        if(findUser != null){
+            List<Item>  userItems = itemService.getAllUserItems(id);
+            return new ResponseEntity<>(userItems, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }

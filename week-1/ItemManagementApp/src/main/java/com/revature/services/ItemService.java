@@ -5,6 +5,7 @@ import com.revature.repos.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -47,5 +48,17 @@ public class ItemService {
 
     public Item createItem(Item item){
         return  itemRepository.save(item);
+    }
+
+    public List<Item> getAllItems(){
+        return  itemRepository.findAll();
+    }
+
+    public  List<Item> getAllUserItems(Integer id){
+        return itemRepository.findUserItems(id);
+    }
+
+    public Integer deleteItemById(Integer id){
+        return  itemRepository.deleteItemById(id);
     }
 }

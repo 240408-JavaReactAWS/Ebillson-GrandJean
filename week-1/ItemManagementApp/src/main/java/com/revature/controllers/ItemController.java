@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/items")
@@ -20,6 +22,7 @@ public class ItemController {
     }
 
     // 6- As a user, I can view a singular Item by its ID
+    // (HINT: Use Path Params to select a Item by its ID)
     @GetMapping("{id}")
     public ResponseEntity<Item> findItemById(@PathVariable int id) {
         Item item = itemService.findItemById(id);
@@ -27,6 +30,7 @@ public class ItemController {
         else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    //  7- As a user, I can update a Item (Change the name or other properties)
     @PatchMapping("{id}")
     public ResponseEntity<Item> updateItemById(@PathVariable Integer id, @RequestBody Item updatedItem) {
         Item savedItem = itemService.updateItem(id, updatedItem);
@@ -36,4 +40,20 @@ public class ItemController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // 4- As a user, I can view all Items
+    @GetMapping
+    public  ResponseEntity<List<Item>> getAllItems(){
+        List<Item> items = itemService.getAllItems();
+        return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    //    8- As a user, I can delete a Item by its ID
+    //    (HINT: Use Path Params to select a Item by its ID)
+    @DeleteMapping("{id}")
+    public ResponseEntity<Integer> deleteItemById(@PathVariable Integer id){
+        Integer deletedItemCount = itemService.deleteItemById(id);
+        return new ResponseEntity<>(deletedItemCount, HttpStatus.OK);
+    }
+
 }
