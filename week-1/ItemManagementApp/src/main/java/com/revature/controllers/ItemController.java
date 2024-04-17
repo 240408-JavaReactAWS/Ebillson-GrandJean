@@ -53,6 +53,7 @@ public class ItemController {
     @DeleteMapping("{id}")
     public ResponseEntity<Integer> deleteItemById(@PathVariable Integer id){
         Integer deletedItemCount = itemService.deleteItemById(id);
+        if(deletedItemCount == 0) return new ResponseEntity<>(deletedItemCount, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(deletedItemCount, HttpStatus.OK);
     }
 
